@@ -70,21 +70,21 @@ def all_supplies_in_holidays(holiday_hash)
   # etc.
   
   
-  holiday_hash.collect do |k,v|
+  holiday_hash.each do |season, data|
+    puts "#{season.to_s.capitalize!}:"
+    data.each do |holiday, supply|
+      array = holiday.to_s.split("_")
+      final_holiday = []
+        array.each do |x|
+          final_holiday << x.capitalize!
+        end
+      holiday = final_holiday.join(" ")
 
-  #puts "#{k.to_s.capitalize}" 
- v.collect do |holidays,supplies|
-   array =  holidays.to_s.split("_")
-   finalarray = []
-   array.each do |x|
-   finalarray << x.capitalize 
-   end
-  #puts finalarray
-    holidays = finalarray.join(" ")
-    puts "#{holidays} #{supplies} "
-      
-end   
-end 
+       supply = supply.join(", ")
+      puts "  #{holiday}: #{supply}"
+
+     end
+  end
 
 
 end
